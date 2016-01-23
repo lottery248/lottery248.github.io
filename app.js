@@ -21,7 +21,7 @@ var config = {
   force_https_redirect: !isRunningLocally(),
   // - Configure the house edge (default is 1%)
   //   Must be between 0.0 (0%) and 1.0 (100%)
-  house_edge: 0.0005,
+  house_edge: 0.001,
   chat_buffer_size: 250,
   // - The amount of bets to show on screen in each tab
   bet_buffer_size: 25
@@ -104,7 +104,7 @@ helpers.calcNumber = function(cond, winProb) {
   if (cond === '<') {
     return winProb * 100;
   } else {
-    return 9999.99 - (winProb * 100);
+    return 99.99 - (winProb * 100);
   }
 };
 
@@ -1184,7 +1184,7 @@ var BetBoxMultiplier = React.createClass({
     } else if (num < 1.01) {
       Dispatcher.sendAction('UPDATE_MULTIPLIER', { error: 'MULTIPLIER_TOO_LOW' });
       // Ensure multiplier is <= max allowed multiplier (100x for now)
-    } else if (num > 100000) {
+    } else if (num > 9990) {
       Dispatcher.sendAction('UPDATE_MULTIPLIER', { error: 'MULTIPLIER_TOO_HIGH' });
       // Ensure no more than 2 decimal places of precision
     } else if (helpers.getPrecision(num) > 2) {
