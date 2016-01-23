@@ -104,7 +104,7 @@ helpers.calcNumber = function(cond, winProb) {
   if (cond === '<') {
     return winProb * 100;
   } else {
-    return 99.9999 - (winProb * 100);
+    return 9999.99 - (winProb * 100);
   }
 };
 
@@ -1184,7 +1184,7 @@ var BetBoxMultiplier = React.createClass({
     } else if (num < 1.01) {
       Dispatcher.sendAction('UPDATE_MULTIPLIER', { error: 'MULTIPLIER_TOO_LOW' });
       // Ensure multiplier is <= max allowed multiplier (100x for now)
-    } else if (num > 10000) {
+    } else if (num > 100000) {
       Dispatcher.sendAction('UPDATE_MULTIPLIER', { error: 'MULTIPLIER_TOO_HIGH' });
       // Ensure no more than 2 decimal places of precision
     } else if (helpers.getPrecision(num) > 2) {
